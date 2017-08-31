@@ -1,0 +1,4 @@
+[29-Jul-2017 16:42:47 America/Chicago] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'alamin'@'localhost' (using password: YES) in /home/pias/public_html/ent/include/connect.php on line 2
+[29-Jul-2017 16:42:47 America/Chicago] PHP Warning:  mysqli::set_charset(): Couldn't fetch mysqli in /home/pias/public_html/ent/include/connect.php on line 6
+[15-Aug-2017 04:10:06 America/Chicago] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, boolean given in /home/drhanif/public_html/ent/index.php on line 14
+[15-Aug-2017 04:10:06 America/Chicago] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, boolean given in /home/drhanif/public_html/ent/index.php on line 17
