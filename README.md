@@ -14,3 +14,5 @@ Here Any Hospital or Clinic or personal Chember of Doctors can get these facilit
 -----------------------------
 After Clone/Download this go to the include/connect.php
 Add Host Database Username,Passwoard,Database Name.
+
+Default Username "admin" Passwoard "123456"
