@@ -136,10 +136,11 @@
 		        <th>REG NUM</th>
 		        <th>Age</th>
 		        <th>Sex</th>
+		        <th>Unit</th>
 		        <th>Disease</th>
 		        <th>Operation Name</th>
 		        <th>Remarks</th>
-		        <th>Unit</th>
+		        
 
 		        <th>Action</th>
 		       </tr>
@@ -157,10 +158,11 @@
 			        echo '<td>'.$row['reg_num'].'</td>';
 			        echo '<td>'.$row['patient_age'].'</td>';
 			        echo '<td>'.$row['patient_sex'].'</td>';
+			        echo '<td>'.$row['unit'].'</td>';
 			        echo '<td>'.$row['disease_name'].'</td>';
 				    echo '<td>'.$row['operation_name'].'</td>';
 				    echo '<td>'.$row['remarks'].'</td>';
-				    echo '<td>'.$row['unit'].'</td>';
+				    
 				    
 				    	echo '<td><a href="edit.php?me='.$row['reg_num'].'" class="button"><i class="material-icons">mode_edit</i></a>
 				    	<a onClick=\'javascript: return confirm("Please confirm deletion");\' href="delete.php?me='.$row['reg_num'].'" class="button">

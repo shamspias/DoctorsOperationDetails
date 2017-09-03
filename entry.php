@@ -14,13 +14,14 @@
     $patient_sex    = protect(mysqli_real_escape_string($db,$_POST['patient_sex']));
     $remarks        = protect(mysqli_real_escape_string($db,$_POST['remarks']));
     $unit           = protect(mysqli_real_escape_string($db,$_POST['unit']));
+    $follow         = protect(mysqli_real_escape_string($db,$_POST['follow']));
 
 		$newDate = date("Y-m-d", strtotime($operation_date));
  
     if(empty($operation_name) or empty($reg_num) or empty($operation_date) or empty($disease_name) or empty($patient_age) or empty($patient_sex)) {
       echo error("Please input all field!");
     } else {
-    	$sql = $db->query("INSERT operation (operation_name, reg_num,  operation_date, disease_name, patient_sex, patient_age,remarks,unit) VALUES ('$operation_name', '$reg_num', '$newDate', '$disease_name', '$patient_sex', '$patient_age','$remarks','$unit')");
+    	$sql = $db->query("INSERT operation (operation_name, reg_num,  operation_date, disease_name, patient_sex, patient_age,remarks,unit,follow) VALUES ('$operation_name', '$reg_num', '$newDate', '$disease_name', '$patient_sex', '$patient_age','$remarks','$unit','$follow')");
 		  if($sql){
 		    echo success("Operation  added Successfully!");
 		  }
@@ -37,25 +38,18 @@
   <div class="container valign">
     <div class="row">
       <form action="" method="post">
+
+          <div class="input-field col s12 m6">
+	        <input name="operation_date" id="operation_date" type="DATE" class="validate">
+	        <label for="operation_date"></label>
+	      </div>
 	      
 	      <div class="input-field col s12 m6">
         	<input name="reg_num" id="reg_num" type="text">
 	        <label for="reg_num">REGISTRATION NUMBER</label>
 	      </div>
 
-	      <div class="input-field col s12 m6">
-	        <input name="operation_name" id="operation_name" type="text">
-		    <label for="operation_name">OPERATION NAME</label>
-	      </div>
 
-	      <div class="input-field col s12 m6">
-	        <input name="disease_name" id="disease_name" type="text" class="validate">
-	        <label for="disease_name">DISEASE NAME</label>
-	      </div>
-          <div class="input-field col s12 m6">
-	        <input name="operation_date" id="operation_date" type="DATE" class="validate">
-	        <label for="operation_date"></label>
-	      </div>
 
 	      <div class="input-field col s12 m3">
 	        <input name="patient_age" id="patient_age" type="text" class="validate">
@@ -71,14 +65,32 @@
 			    </select>
 		  		<label>SEX</label>
 	      </div>
-				
-         <div class="input-field col s12 m3">
-	      	<input type="text" class="remarks" name="remarks" required>
-		  		<label for="operation_date">REMARKS</label>
+
+
+	      <div class="input-field col s12 m6">
+	        <input name="disease_name" id="disease_name" type="text" class="validate">
+	        <label for="disease_name">DISEASE NAME</label>
 	      </div>
-	       <div class="input-field col s12 m3">
+
+	      <div class="input-field col s12 m6">
+	        <input name="operation_name" id="operation_name" type="text">
+		    <label for="operation_name">OPERATION NAME</label>
+	      </div>
+
+	      <div class="input-field col s12 m3">
 	      	<input type="text" class="unit" name="unit" required>
 		  		<label for="unit">UNIT</label>
+	      </div>
+				
+         <div class="input-field col s12 m3">
+	      	<input type="text" class="remarks" name="remarks" >
+		  		<label for="operation_date">REMARKS</label>
+	      </div>
+
+
+	      <div class="input-field col s12 m12">
+	      	<input type="text" class="follow" name="follow" >
+		  		<label for="follow">FOLLOW UP</label>
 	      </div>
 
 	      <div style="" class="input-field col s12">

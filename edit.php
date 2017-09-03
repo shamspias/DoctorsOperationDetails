@@ -19,6 +19,7 @@
     $patient_sex    = protect(mysqli_real_escape_string($db,$_POST['patient_sex']));
     $remarks        = protect(mysqli_real_escape_string($db,$_POST['remarks']));
     $unit           = protect(mysqli_real_escape_string($db,$_POST['unit']));
+    $follow         = protect(mysqli_real_escape_string($db,$_POST['follow']));
 
 		$newDate = date("Y-m-d", strtotime($operation_date));
  
@@ -26,7 +27,7 @@
       echo error("Please input all field!");
     } else {
   
-    	$sql = $db->query("UPDATE operation SET operation_name = '$operation_name', reg_num= '$reg_num',  operation_date = '$newDate', disease_name = '$disease_name', patient_sex = '$patient_sex', patient_age = '$patient_age',remarks = '$remarks',unit = '$unit' WHERE reg_num = $id");
+    	$sql = $db->query("UPDATE operation SET operation_name = '$operation_name', reg_num= '$reg_num',  operation_date = '$newDate', disease_name = '$disease_name', patient_sex = '$patient_sex', patient_age = '$patient_age',remarks = '$remarks',unit = '$unit',follow = '$follow' WHERE reg_num = $id");
     	   
 
     	   echo "<br>Hello It's working";
@@ -58,6 +59,7 @@
 						$de  = $row['disease_name'];
 						$re  = $row['remarks'];
 						$un  = $row['unit'];
+						$fo  = $row['follow'];
 
 						
 						}
@@ -72,22 +74,13 @@
       <form action="" method="post">
 	      
 	      <div class="input-field col s12 m6">
-        	<input name="reg_num" id="reg_num" type="text" value="<?php echo $reg ?>">
-	        <label for="reg_num">REGISTRATION NUMBER</label>
-	      </div>
-
-	      <div class="input-field col s12 m6">
-	        <input name="operation_name" id="operation_name" type="text" value="<?php echo $on ?>">
-		    <label for="operation_name">OPERATION NAME</label>
-	      </div>
-
-	      <div class="input-field col s12 m6">
-	        <input name="disease_name" id="disease_name" type="text" class="validate" value="<?php echo $de ?>">
-	        <label for="disease_name">DISEASE NAME</label>
-	      </div>
-          <div class="input-field col s12 m6">
 	        <input name="operation_date" id="operation_date" type="DATE" class="validate" value="<?php echo $da ?>">
 	        <label for="operation_date"></label>
+	      </div>
+
+	      <div class="input-field col s12 m6">
+        	<input name="reg_num" id="reg_num" type="text" value="<?php echo $reg ?>">
+	        <label for="reg_num">REGISTRATION NUMBER</label>
 	      </div>
 
 	      <div class="input-field col s12 m3">
@@ -105,14 +98,34 @@
 			    </select>
 		  		<label>SEX</label>
 	      </div>
-				
-         <div class="input-field col s12 m3">
-	      	<input type="text" class="remarks" name="remarks" value="<?php echo $re ?>" required>
-		  		<label for="remarks">REMARKS</label>
+
+	      <div class="input-field col s12 m6">
+	        <input name="disease_name" id="disease_name" type="text" class="validate" value="<?php echo $de ?>">
+	        <label for="disease_name">DISEASE NAME</label>
 	      </div>
+
+	      <div class="input-field col s12 m6">
+	        <input name="operation_name" id="operation_name" type="text" value="<?php echo $on ?>">
+		    <label for="operation_name">OPERATION NAME</label>
+	      </div>
+
+
+
 	      <div class="input-field col s12 m3">
 	      	<input type="text" class="unit" name="unit" value="<?php echo $un ?>" required>
 		  		<label for="unit">UNIT</label>
+	      </div>
+
+				
+         <div class="input-field col s12 m3">
+	      	<input type="text" class="remarks" name="remarks" value="<?php echo $re ?>" >
+		  		<label for="remarks">REMARKS</label>
+	      </div>
+
+
+	      <div class="input-field col s12 m12">
+	      	<input type="text" class="follow" name="follow" value="<?php echo $fo ?>" >
+		  		<label for="follow">FOLLOW UP</label>
 	      </div>
 
 
