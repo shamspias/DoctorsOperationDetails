@@ -148,6 +148,8 @@
 
 		    <tbody>
 			    <?php
+			   // $piasf="000134";
+			    $piasl=md5(uniqid(rand(), true));
 				  	if(mysqli_num_rows($result) <= 0) {
 				    	echo '<tr>  <td>No result to display!</td> </tr>';
 				    }
@@ -164,7 +166,7 @@
 				    echo '<td>'.$row['remarks'].'</td>';
 				    
 				    
-				    	echo '<td><a href="edit.php?me='.$row['reg_num'].'" class="button"><i class="material-icons">mode_edit</i></a>
+				    	echo '<td><a href="edit.php?me='.$row['reg_num'].$piasl.'" class="button"><i class="material-icons">mode_edit</i></a>
 				    	<a onClick=\'javascript: return confirm("Please confirm deletion");\' href="delete.php?me='.$row['reg_num'].'" class="button">
 				    	<i class="material-icons">delete</i></a></td> </tr>';
 				    	$count++;

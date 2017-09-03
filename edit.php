@@ -5,40 +5,43 @@
     header("Location: login.php");
   }
 
-    $id = $_GET['me'];
+    $pp = protect(mysqli_real_escape_string($db,$_GET['me']));
+
+    $id = substr($pp,0,-32);
+    //$id = substr($id,6,6);
 
 
 
 
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $operation_name = protect(mysqli_real_escape_string($db,$_POST['operation_name'])); 
-    $reg_num        = protect(mysqli_real_escape_string($db,$_POST['reg_num']));
-    $operation_date = protect(mysqli_real_escape_string($db,$_POST['operation_date']));
-    $disease_name   = protect(mysqli_real_escape_string($db,$_POST['disease_name']));
-    $patient_age    = protect(mysqli_real_escape_string($db,$_POST['patient_age']));
-    $patient_sex    = protect(mysqli_real_escape_string($db,$_POST['patient_sex']));
-    $remarks        = protect(mysqli_real_escape_string($db,$_POST['remarks']));
-    $unit           = protect(mysqli_real_escape_string($db,$_POST['unit']));
-    $follow         = protect(mysqli_real_escape_string($db,$_POST['follow']));
+		if($_SERVER["REQUEST_METHOD"] == "POST") {
+	    $operation_name = protect(mysqli_real_escape_string($db,$_POST['operation_name'])); 
+	    $reg_num        = protect(mysqli_real_escape_string($db,$_POST['reg_num']));
+	    $operation_date = protect(mysqli_real_escape_string($db,$_POST['operation_date']));
+	    $disease_name   = protect(mysqli_real_escape_string($db,$_POST['disease_name']));
+	    $patient_age    = protect(mysqli_real_escape_string($db,$_POST['patient_age']));
+	    $patient_sex    = protect(mysqli_real_escape_string($db,$_POST['patient_sex']));
+	    $remarks        = protect(mysqli_real_escape_string($db,$_POST['remarks']));
+	    $unit           = protect(mysqli_real_escape_string($db,$_POST['unit']));
+	    $follow         = protect(mysqli_real_escape_string($db,$_POST['follow']));
 
-		$newDate = date("Y-m-d", strtotime($operation_date));
- 
-    if(empty($operation_name) or empty($reg_num) or empty($operation_date) or empty($disease_name) or empty($patient_age) or empty($patient_sex)) {
-      echo error("Please input all field!");
-    } else {
-  
-    	$sql = $db->query("UPDATE operation SET operation_name = '$operation_name', reg_num= '$reg_num',  operation_date = '$newDate', disease_name = '$disease_name', patient_sex = '$patient_sex', patient_age = '$patient_age',remarks = '$remarks',unit = '$unit',follow = '$follow' WHERE reg_num = $id");
-    	   
+			$newDate = date("Y-m-d", strtotime($operation_date));
+	 
+	    if(empty($operation_name) or empty($reg_num) or empty($operation_date) or empty($disease_name) or empty($patient_age) or empty($patient_sex)) {
+	      echo error("Please input all field!");
+	    } else {
+	  
+	    	$sql = $db->query("UPDATE operation SET operation_name = '$operation_name', reg_num= '$reg_num',  operation_date = '$newDate', disease_name = '$disease_name', patient_sex = '$patient_sex', patient_age = '$patient_age',remarks = '$remarks',unit = '$unit',follow = '$follow' WHERE reg_num = $id");
+	    	   
 
-    	   echo "<br>Hello It's working";
+	    	   
 
-		  if($sql){
-		    echo success("Operation  update Successfully!");
-		    header('Location: result.php');
-		  }
+			  if($sql){
+			    echo success("Operation  update Successfully!");
+			    header('Location: result.php');
+			  }
+
+			}
 		}
-	}
-
 
 
 
@@ -64,6 +67,10 @@
 						
 						}
 					}
+					 if(!$reg)
+					  {
+					 	header("Location: result.php");
+					  }
 
 			    ?>  
 
