@@ -38,7 +38,7 @@
           <label for="username">Username</label>
         </div>
         <div class="input-field col s12">
-          <input name="password" id="password" type="text" class="validate">
+          <input name="password" id="password" type="password" class="validate">
           <label for="password">Password</label>
         </div>
         <div class="input-field col s12">
